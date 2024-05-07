@@ -23,7 +23,15 @@ router.get('/testing', async (req, res) => {
       key_id: process.env.RAZORPAY_KEY_ID,
       message: "API is up & running."
     };
+    res.json(data);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
 
+router.post('/callback', async (req, res) => {
+  try {
+    console.log("in callback API Body ===", req.body)
     res.json(data);
   } catch (error) {
     res.status(500).send(error);
